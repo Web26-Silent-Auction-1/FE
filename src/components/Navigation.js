@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -18,7 +18,12 @@ const Navigation = (props) => {
     
     return token ? ( 
     <div className="NavBar">
-        <a href='silentauction-app.netlify.com'>Home</a>
+        <Route path='/marketpage' component={() => { 
+     window.location.href = 'https://silentauction-app.netlify.com/'; 
+     return null;
+    }}>
+        <Link to='/marketpage'>Home</Link>
+        </Route>
         <Link to='/auctions'>Auctions</Link>
         {props.user_type === 'seller' ? (<Link to={`/dashboard/${props.user_type}/${props.user_id}`}>Seller Dash</Link>):(<Link to={`/dashboard/${props.user_type}/${props.id}`}>Bidder Dash</Link>)}        
         <button onClick={signOut}>Sign out</button>
