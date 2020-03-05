@@ -3,17 +3,21 @@ import { connect } from 'react-redux'
 import {AuctionCard} from './AuctionCard'
 import {fetchingAuction} from '../actions'
 
+
 function AuctionList(props) {
     console.log(`AuctionList`,props)
-
-useEffect(()=>{
-    props.fetchingAuction()
-}, [])
-
+    useEffect(()=>{
+        props.fetchingAuction()
+    }, [props])
     return (
-        <div>
+        <div className="auctionListWrapper">
             {props.auctions.map((auction)=>{
-                return <AuctionCard key={auction.id} auction={auction}/>
+                if(Date.parse(auction.deadline)>Date.now()){
+                    console.log("auction",auction)
+                    return <AuctionCard key={auction.id} auction={auction}/>
+                }else{
+                    return null;
+                }
             })}
             
         </div>
@@ -25,3 +29,10 @@ export default connect(state=> {
         auctions: state.crudReducer.auctions
     }
 }, {fetchingAuction})(AuctionList)
+
+
+
+
+
+
+

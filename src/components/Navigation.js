@@ -17,11 +17,9 @@ const Navigation = (props) => {
 
     
     return token ? ( 
-    <div>
-
+    <div className="NavBar">
         <Link to='/auctions'>Auctions</Link>
-        {props.user_type === 'seller' ? (<Link to={`/dashboard/${props.user_type}/${props.user_id}`}>Seller Dash</Link>):(<Link to={`/dashboard/${props.user_type}/${props.id}`}>Bidder Dash</Link>)}
-        
+        {props.user_type === 'seller' ? (<Link to={`/dashboard/${props.user_type}/${props.user_id}`}>Seller Dash</Link>):(<Link to={`/dashboard/${props.user_type}/${props.id}`}>Bidder Dash</Link>)}        
         <button onClick={signOut}>Sign out</button>
     </div>
 ):(null)
