@@ -4,9 +4,6 @@ import {connect} from 'react-redux'
 import {Switch, Route} from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
 
-// Components
-import {AuctionContainer} from './components/AuctionContainer'
-
 import Navigation from './components/Navigation'
 // import AuctionPage from './AuctionPage'
 import Login from './components/Login'
