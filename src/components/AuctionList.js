@@ -4,11 +4,10 @@ import {AuctionCard} from './AuctionCard'
 import {fetchingAuction} from '../actions'
 
 function AuctionList(props) {
-    console.log(`AuctionList`,props)
 
 useEffect(()=>{
     props.fetchingAuction()
-}, [])
+}, [props.fetchAgain, props.isDeleting, props.isUpdating])
 
     return (
         <div>
@@ -22,6 +21,8 @@ useEffect(()=>{
 
 export default connect(state=> {
     return{
-        auctions: state.crudReducer.auctions
+        auctions: state.crudReducer.auctions,
+        isDeleting: state.crudReducer.isDeleting,
+        isUpdating: state.crudReducer.isUpdating
     }
 }, {fetchingAuction})(AuctionList)

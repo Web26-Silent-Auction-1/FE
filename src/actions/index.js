@@ -49,12 +49,10 @@ export const fetchingAuction = () => {
         dispatch({type: FETCHING})
         axiosWithAuth().get('/api/auctions')
         .then(res => {
-            console.log(res)
             dispatch({type: SUCCESS_FETCHING, payload: res.data})
 
         })
         .catch(err => {
-            console.log(err)
             dispatch({type: FAILURE_FETCHING})
         })
     }
@@ -71,11 +69,12 @@ export const postAuction = (listing) => {
         dispatch({type: POSTING_AUCTION})
         axiosWithAuth().post('/api/auctions', listing)
         .then(res => {
-            console.log(res)
-            dispatch({type: SUCCESS_POSTING_AUCTION})
+            console.log(`posting data`,res)
+            dispatch({type: SUCCESS_POSTING_AUCTION, payload: res.data.body})
 
         })
         .catch(err => {
+            console.log(`posting err`,err)
             dispatch({type: FAILURE_POSTING_AUCTION})
         })
     }
@@ -92,7 +91,6 @@ export const deleteAuction = (id) => {
         dispatch({type: DELETE_AUCTION})
         axiosWithAuth().delete(`/api/auctions/${id}`)
         .then(res => {
-            console.log(res)
             dispatch({type: SUCCESS_DELETE_AUCTION})
 
         })
@@ -113,12 +111,10 @@ export const updateAuction = (id, listing) => {
         dispatch({type: UPDATE_AUCTION})
         axiosWithAuth().put(`/api/auctions/${id}`, listing)
         .then(res => {
-            console.log(res)
             dispatch({type: SUCCESS_UPDATE_AUCTION})
 
         })
         .catch(err => {
-            console.log(err)
             dispatch({type: FAILURE_UPDATE_AUCTION})
         })
     }
