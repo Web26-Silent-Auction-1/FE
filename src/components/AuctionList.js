@@ -7,7 +7,7 @@ function AuctionList(props) {
 
 useEffect(()=>{
     props.fetchingAuction()
-}, [props.fetchAgain])
+}, [props.fetchAgain, props.isDeleting, props.isUpdating])
 
     return (
         <div>
@@ -22,6 +22,7 @@ useEffect(()=>{
 export default connect(state=> {
     return{
         auctions: state.crudReducer.auctions,
-        isFetching: state.crudReducer.isFetching
+        isDeleting: state.crudReducer.isDeleting,
+        isUpdating: state.crudReducer.isUpdating
     }
 }, {fetchingAuction})(AuctionList)
