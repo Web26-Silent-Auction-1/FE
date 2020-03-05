@@ -4,9 +4,6 @@ import {connect} from 'react-redux'
 import {Switch, Route} from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
 
-// Components
-import {AuctionContainer} from './components/AuctionContainer'
-
 import Navigation from './components/Navigation'
 // import AuctionPage from './AuctionPage'
 import Login from './components/Login'
@@ -20,11 +17,16 @@ function App(props) {
   console.log(`in app.js`,props)
   return (
     <div className="App">
-      <p>App</p>
+      <Switch>
+      <Route exact path='/signup'>
+          <Signup/>
+      </Route>
+      <Route exact path='/login'>
+        <Login/>
+      </Route>
+      </Switch>
       <Navigation/>
             <Switch>
-                <Route exact path='/signup' component={Signup}/>
-                <Route exact path='/login' component={Login}/>
                 <PrivateRoute exact path='/auctions' component={AuctionList}/>
                 <PrivateRoute exact path='/dashboard/seller/:id' component={SellerDash}/>
                 <PrivateRoute exact path='/dashboard/bidder/:id' component={BidderDash}/>
