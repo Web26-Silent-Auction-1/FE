@@ -20,6 +20,7 @@ function App(props) {
   console.log(`in app.js`,props)
   return (
     <div className="App">
+      <p>App</p>
       <Navigation/>
             <Switch>
                 <Route exact path='/signup' component={Signup}/>
