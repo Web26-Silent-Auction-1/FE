@@ -4,7 +4,6 @@ import {postAuction} from '../actions'
 import AuctionList from './AuctionList'
 
 function SellerDash(props) {
-    console.log(props)
     const [listing, setListing] = useState({
         name: '',
         image: '',
@@ -13,7 +12,6 @@ function SellerDash(props) {
         deadline: '',
         user_id: props.user_id
     })
-    console.log(listing)
 
     const handleChange = (e) => {
         e.preventDefault()
