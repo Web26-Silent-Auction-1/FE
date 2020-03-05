@@ -33,21 +33,21 @@ export const crudReducer = (state = initialState, action) => {
         return {...state, isFetching: false}
     case POSTING_AUCTION:
         return {...state, isPosting: true}
-        case SUCCESS_POSTING_AUCTION:
-        return {...state, auctions: action.payload, isPosting: false}
+    case SUCCESS_POSTING_AUCTION:
+        return {...state, auctions: [...state, action.payload], isPosting: false}
     case FAILURE_POSTING_AUCTION:
         return {...state, isPosting: false}
-       case DELETE_AUCTION:
+    case DELETE_AUCTION:
         return {...state, isDeleting: true}
-       case SUCCESS_DELETE_AUCTION:
-        console.log(`in crud reducer success delete`,state, action)
-       case FAILURE_DELETE_AUCTION:
+    case SUCCESS_DELETE_AUCTION:
         return {...state, isDeleting: false}
-       case UPDATE_AUCTION:
+    case FAILURE_DELETE_AUCTION:
+        return {...state, isDeleting: false}
+    case UPDATE_AUCTION:
         return {...state, isUpdating: true}
-       case SUCCESS_UPDATE_AUCTION:
-        console.log(`in crud reducer success delete`,state, action)
-       case FAILURE_UPDATE_AUCTION:
+    case SUCCESS_UPDATE_AUCTION:
+        return {...state, isUpdating: false}
+    case FAILURE_UPDATE_AUCTION:
         return {...state, isUpdating: false}
      default: 
         return state

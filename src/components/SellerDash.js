@@ -4,6 +4,7 @@ import {postAuction} from '../actions'
 import AuctionList from './AuctionList'
 
 function SellerDash(props) {
+    const [fetchAgain, setFetchAgain] = useState(false)
     const [listing, setListing] = useState({
         name: '',
         image: '',
@@ -12,15 +13,16 @@ function SellerDash(props) {
         deadline: '',
         user_id: props.user_id
     })
+    console.log(fetchAgain)
 
     const handleChange = (e) => {
-        e.preventDefault()
         setListing({...listing, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         props.postAuction(listing)
+        setFetchAgain(true)
         setListing({
         name: '',
         image: '',
@@ -29,6 +31,9 @@ function SellerDash(props) {
         deadline: '',
         user_id: props.user_id
         })
+        setTimeout(() => {
+           setFetchAgain(false) 
+        }, 2000);
     }
 
     return (
@@ -53,7 +58,7 @@ function SellerDash(props) {
                 <button type='submit'>Post Auction</button>
             </form>
 
-            <AuctionList/>
+            <AuctionList fetchAgain={fetchAgain}/>
         </div>
     )
 }

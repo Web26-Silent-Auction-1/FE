@@ -70,7 +70,7 @@ export const postAuction = (listing) => {
         axiosWithAuth().post('/api/auctions', listing)
         .then(res => {
             console.log(`posting data`,res)
-            dispatch({type: SUCCESS_POSTING_AUCTION})
+            dispatch({type: SUCCESS_POSTING_AUCTION, payload: res.data.body})
 
         })
         .catch(err => {
