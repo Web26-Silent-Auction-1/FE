@@ -20,6 +20,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import StripeCheckoutButton from './StripeCheckoutButton'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -71,12 +73,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const CloserLook = (props) => {
-    console.log(`closerlook`,props)
-    const [editing, setEditing] = useState(false)
-
-    const toggle = () => {
-        setEditing(!editing)
-    }
 
         const [listing, setListing] = useState({
             name: '',
@@ -125,6 +121,13 @@ const CloserLook = (props) => {
       setExpanded(!expanded);
     };
 
+    // Use the state down below to add bid feature or buy now.
+
+    const [buyBid, setBuyBid] = useState(false);
+    const handleBuyBid = () => {
+      setBuyBid(!buyBid);
+    };
+
     console.log()
     return (
         <div className="auctionWrapper">        
@@ -155,6 +158,7 @@ const CloserLook = (props) => {
                 </CardContent>
                 <CardActions className={classes.buttons}>
                     <EditIcon aria-label="edit" onClick={handleExpandClick}/>
+                    <ShoppingCart aria-label='shopping-cart' onClick={handleBuyBid}/>
                     <DeleteIcon aria-label="delete" onClick={()=> {props.deleteAuction(props.location.state.id)
                     history.push('/auctions')}}/>
                 </CardActions>
@@ -181,32 +185,19 @@ const CloserLook = (props) => {
                             </form>
                     </CardContent>
             </Collapse>
-            </Card>
-         
-        {editing ? ( (
-        <div>
-            <p>Sellers Dash</p>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='name'>Name</label>
-                <input name='name' onChange={handleChange} value={listing.name}/>
+            <Collapse in={buyBid} timeout="auto" unmountOnExit>
+                    <CardContent>                    
+                            Skip Bid and Buy now? 
+                            <div className="test-warning">
+                                *Please use the following test credit card for payments* <br /> 
+                                4242 4242 4242 4242 <br/> 
+                                - Exp: 05/20 - CVC: 123
+                            </div>
+                         <StripeCheckoutButton price={100} />
 
-                <label htmlFor='image'>Image</label>
-                <input name='image' onChange={handleChange} value={listing.image}/>
-
-                <label htmlFor='description'>Description</label>
-                <input name='description' onChange={handleChange} value={listing.description}/>
-
-                <label htmlFor='starting_price'>Starting price</label>
-                <input name='starting_price' onChange={handleChange} value={listing.starting_price}/>
-
-                <label htmlFor='deadline'>Deadline</label>
-                <input type='datetime-local' name='deadline' onChange={handleChange} value={listing.deadline}/>
-
-                <button type='submit'>Edit Auction</button>
-            </form>
-
-        </div>
-    )) : (null)}      
+                    </CardContent>
+            </Collapse>
+            </Card>     
         </div>
     )
 }

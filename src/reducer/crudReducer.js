@@ -15,7 +15,6 @@ const initialState= {
 }
 
 export const crudReducer = (state = initialState, action) => {
-    console.log(action)
     switch(action.type){
     case POSTING:
         return {...state, isPosting: true}
