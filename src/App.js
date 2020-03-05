@@ -20,11 +20,16 @@ function App(props) {
   console.log(`in app.js`,props)
   return (
     <div className="App">
-      <p>App</p>
+      <Switch>
+      <Route exact path='/signup'>
+          <Signup/>
+      </Route>
+      <Route exact path='/login'>
+        <Login/>
+      </Route>
+      </Switch>
       <Navigation/>
             <Switch>
-                <Route exact path='/signup' component={Signup}/>
-                <Route exact path='/login' component={Login}/>
                 <PrivateRoute exact path='/auctions' component={AuctionList}/>
                 <PrivateRoute exact path='/dashboard/seller/:id' component={SellerDash}/>
                 <PrivateRoute exact path='/dashboard/bidder/:id' component={BidderDash}/>
