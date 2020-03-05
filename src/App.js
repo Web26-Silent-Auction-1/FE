@@ -26,6 +26,10 @@ function App(props) {
       </Switch>
       <Navigation/>
             <Switch>
+            {/* <PrivateRoute exact path='/marketpage' component={() => { 
+     window.location.href = 'https://silentauction-app.netlify.com/'; 
+     return null;
+    }}/> */}
                 <PrivateRoute exact path='/auctions' component={AuctionList}/>
                 <PrivateRoute exact path='/dashboard/seller/:id' component={SellerDash}/>
                 <PrivateRoute exact path='/dashboard/bidder/:id' component={BidderDash}/>

@@ -18,12 +18,8 @@ const Navigation = (props) => {
     
     return token ? ( 
     <div className="NavBar">
-        <Route path='/marketpage' component={() => { 
-     window.location.href = 'https://silentauction-app.netlify.com/'; 
-     return null;
-    }}>
-        <Link to='/marketpage'>Home</Link>
-        </Route>
+
+        <a href='https://silentauction-app.netlify.com/' >Home</a>
         <Link to='/auctions'>Auctions</Link>
         {props.user_type === 'seller' ? (<Link to={`/dashboard/${props.user_type}/${props.user_id}`}>Seller Dash</Link>):(<Link to={`/dashboard/${props.user_type}/${props.id}`}>Bidder Dash</Link>)}        
         <button onClick={signOut}>Sign out</button>
