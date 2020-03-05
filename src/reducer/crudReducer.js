@@ -1,4 +1,4 @@
-import {POSTING, SUCCESS_POSTING_LOGIN,SUCCESS_POSTING_SIGNUP, FAILURE_POSTING, FETCHING, SUCCESS_FETCHING, FAILURE_FETCHING, SUCCESS_POSTING_AUCTION, FAILURE_POSTING_AUCTION, POSTING_AUCTION} from '../actions'
+import {POSTING, SUCCESS_POSTING_LOGIN,SUCCESS_POSTING_SIGNUP, FAILURE_POSTING, FETCHING, SUCCESS_FETCHING, FAILURE_FETCHING, SUCCESS_POSTING_AUCTION, FAILURE_POSTING_AUCTION, POSTING_AUCTION, DELETE_AUCTION, FAILURE_DELETE_AUCTION, SUCCESS_DELETE_AUCTION, UPDATE_AUCTION, FAILURE_UPDATE_AUCTION, SUCCESS_UPDATE_AUCTION} from '../actions'
 
 const initialState= {
     user: {
@@ -33,10 +33,22 @@ export const crudReducer = (state = initialState, action) => {
         return {...state, isFetching: false}
     case POSTING_AUCTION:
         return {...state, isPosting: true}
-        case SUCCESS_POSTING_AUCTION:
-        return {...state, auctions: action.payload, isPosting: false}
+    case SUCCESS_POSTING_AUCTION:
+        return {...state, auctions: [...state, action.payload], isPosting: false}
     case FAILURE_POSTING_AUCTION:
         return {...state, isPosting: false}
+    case DELETE_AUCTION:
+        return {...state, isDeleting: true}
+    case SUCCESS_DELETE_AUCTION:
+        return {...state, isDeleting: false}
+    case FAILURE_DELETE_AUCTION:
+        return {...state, isDeleting: false}
+    case UPDATE_AUCTION:
+        return {...state, isUpdating: true}
+    case SUCCESS_UPDATE_AUCTION:
+        return {...state, isUpdating: false}
+    case FAILURE_UPDATE_AUCTION:
+        return {...state, isUpdating: false}
      default: 
         return state
     }

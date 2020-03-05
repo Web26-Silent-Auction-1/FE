@@ -34,22 +34,30 @@ body{
 }
 
 .form-wrapper{
-  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  border: 1px solid red;
 }
 
 .form-wrapper form{
+  height: fit-content;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin: 0 auto;
-  padding: 2%;
+  padding: 5% 3% 1%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
 }
 .form-wrapper form label{
   font-size: 1.5rem;
 }
 .form-wrapper form input{
-  margin-bottom: 6%;
-  padding: 0.4rem;
+  margin: 1% 0 6%;
+  padding: 0.5rem;
+  border-radius: 10px;
 }
 .form-wrapper form input:invalid,.form-wrapper form input:required{
   border: 1px solid red;
@@ -65,21 +73,33 @@ body{
 }
 .form-wrapper form button{
   padding: 0.5rem 2.5rem;
-  font-size: 1.5rem;
-
-  margin: 0 auto;
+  font-size: 1.7rem;
+  margin: 10% auto;
   border: none;
   border-radius: 20px;
-  background-color: crimson;
+  background-color: MEDIUMSLATEBLUE;
+  font-family: "Nunito, sans-serif";
+  font-weight: 700;
+  letter-spacing: 0.1rem;
   color: white;
 }
+.form-wrapper form button:hover{
+  background-color: SLATEBLUE;
+}
 .form-wrapper .MuiFormLabel-root.Mui-focused{
-  color:crimson;
+  color:SLATEBLUE;
 }
 .form-wrapper .MuiFormGroup-root{
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.form-wrapper p{
+  font-size: 1.2rem;
+}
+.form-wrapper a{
+  text-decoration: none;
+  color: slateblue;
 }
 
 .auctionListWrapper{
@@ -89,7 +109,6 @@ body{
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-around;
-
 }
 
 .Auctions {

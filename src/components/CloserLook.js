@@ -106,6 +106,7 @@ const CloserLook = (props) => {
         const handleSubmit = (e) => {
             e.preventDefault()
             props.updateAuction(props.location.state.id, listing)
+            history.push('/auctions')
             setListing({
             name: '',
             image: '',
@@ -201,7 +202,7 @@ const CloserLook = (props) => {
                 <label htmlFor='deadline'>Deadline</label>
                 <input type='datetime-local' name='deadline' onChange={handleChange} value={listing.deadline}/>
 
-                <button type='submit'>}>Edit Auction</button>
+                <button type='submit'>Edit Auction</button>
             </form>
 
         </div>

@@ -26,7 +26,9 @@ function AuctionList(props) {
 
 export default connect(state=> {
     return{
-        auctions: state.crudReducer.auctions
+        auctions: state.crudReducer.auctions,
+        isDeleting: state.crudReducer.isDeleting,
+        isUpdating: state.crudReducer.isUpdating
     }
 }, {fetchingAuction})(AuctionList)
 

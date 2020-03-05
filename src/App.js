@@ -5,7 +5,6 @@ import {Switch, Route} from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
 
 import Navigation from './components/Navigation'
-// import AuctionPage from './AuctionPage'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import SellerDash from './components/SellerDash'
