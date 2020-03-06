@@ -27,7 +27,6 @@ export const loginSave = (userInput) => {
         axiosWithAuth().post('/api/auth/login', userInput)
         .then(res => {
             window.localStorage.setItem('token', res.data.token)
-            alert(`${res.data.message}, you are now being redirected to Auction Page.`)
             dispatch({type: SUCCESS_POSTING_LOGIN, payload: {user_id: res.data.id, user_type: res.data.type}})
 
         })
