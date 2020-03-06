@@ -157,10 +157,10 @@ const CloserLook = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.buttons}>
-                    <EditIcon aria-label="edit" onClick={handleExpandClick}/>
-                    <ShoppingCart aria-label='shopping-cart' onClick={handleBuyBid}/>
-                    <DeleteIcon aria-label="delete" onClick={()=> {props.deleteAuction(props.location.state.id)
-                    history.push('/auctions')}}/>
+                    {props.user_type === 'seller' ? (<EditIcon aria-label="edit" onClick={handleExpandClick}/>):(null)}
+                    {props.user_type === 'bidder' ? (<ShoppingCart aria-label='shopping-cart' onClick={handleBuyBid}/>):(null)}
+                    {props.user_type === 'seller' ? (<DeleteIcon aria-label="delete" onClick={()=> {props.deleteAuction(props.location.state.id)
+                    history.push('/auctions')}}/>):(null)}
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent className={classes.editField}>                    
@@ -185,7 +185,7 @@ const CloserLook = (props) => {
                             </form>
                     </CardContent>
             </Collapse>
-            <Collapse in={buyBid} timeout="auto" unmountOnExit>
+            {props.user_type === 'bidder' ? (<Collapse in={buyBid} timeout="auto" unmountOnExit>
                     <CardContent>                    
                             Skip Bid and Buy now? 
                             <div className="test-warning">
@@ -196,7 +196,7 @@ const CloserLook = (props) => {
                          <StripeCheckoutButton price={100} />
 
                     </CardContent>
-            </Collapse>
+            </Collapse>): (null)}
             </Card>     
         </div>
     )
@@ -205,7 +205,8 @@ const CloserLook = (props) => {
 
 export default connect(state=>{
     return{
-        user_id: state.crudReducer.user_id
+        user_id: state.crudReducer.user_id,
+        user_type: state.crudReducer.user_type
     }
 },{updateAuction, deleteAuction})(CloserLook)
 
