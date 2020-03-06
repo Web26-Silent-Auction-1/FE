@@ -38,19 +38,18 @@ function SellerDash(props) {
 
     return (
         <div>
-            <p>Sellers Dash</p>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='name'>Name</label>
-                <input name='name' onChange={handleChange} value={listing.name}/>
+                <input name='name' onChange={handleChange} value={listing.name}/> 
 
                 <label htmlFor='image'>Image</label>
-                <input name='image' onChange={handleChange} value={listing.image}/>
+                <input name='image' onChange={handleChange} value={listing.image}/> <br/>
 
                 <label htmlFor='description'>Description</label>
                 <input name='description' onChange={handleChange} value={listing.description}/>
 
                 <label htmlFor='starting_price'>Starting price</label>
-                <input name='starting_price' onChange={handleChange} value={listing.starting_price}/>
+                <input name='starting_price' onChange={handleChange} value={listing.starting_price}/> 
 
                 <label htmlFor='deadline'>Deadline</label>
                 <input type='datetime-local' name='deadline' onChange={handleChange} value={listing.deadline}/>
