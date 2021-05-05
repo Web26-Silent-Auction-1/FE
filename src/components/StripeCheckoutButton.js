@@ -4,20 +4,21 @@ import axios from "axios";
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
   const publishableKey = "pk_test_lfWw5902jucKcL4cZEmo1voD00PhPKnenF";
-  const onToken = token => {
+  const onToken = (token) => {
     const amount = priceForStripe;
     axios
-      .post(`https://bw-silent-auction-1.herokuapp.com/api/payments`, { amount, token })
-      .then(response => {
+      .post(`https://bw-silent-auction-1.herokuapp.com/api/payments`, {
+        amount,
+        token,
+      })
+      .then((response) => {
         alert("Payment Sucessful");
       })
-      .catch(error => {
-        console.log("Payment error: ", error);
+      .catch((error) => {
         alert(
           "There was as issue with your payment. Please make sure you use the provided credit card."
         );
       });
-    console.log(token);
   };
   return (
     <StripeCheckout

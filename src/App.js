@@ -13,7 +13,6 @@ import AuctionList from "./components/AuctionList";
 import CloserLook from "./components/CloserLook";
 
 function App(props) {
-  console.log(`in app.js`, props);
   return (
     <div className="App">
       <Switch>
